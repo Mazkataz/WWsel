@@ -27,51 +27,54 @@ By workshopDays =By.cssSelector(".dayName-CTNC6");
         return driver.getTitle();
     }
 
-public void StudioButton (){
+public void clickStudioMenuButton (){
     this.waitElement(studioButton);
     driver.findElements(studioButton).get(1).click();
 }
 
-public WebElement StudioSearchField(){
+public void typeStudioSearchField(String zip){
     this.waitElement(locationSearch);
-    return  driver.findElement(locationSearch);
+      driver.findElement(locationSearch).sendKeys(zip);
 }
-public WebElement StudioSubmit(){
+public void clickStudioSubmit(){
     this.waitElement(studioSubmit);
-    return  driver.findElement(studioSubmit);
+      driver.findElement(studioSubmit).click();
 }
 
-    public WebElement FirstResultSearchHeading (){
+    public String FirstResultSearchHeading (){
         this.waitElement(firstResult);
-        return  driver.findElement(firstResult);
+        return  driver.findElement(firstResult).getText();
     }
-    public WebElement FirstResultSearchDistance (){
+    public String FirstResultSearchDistance (){
         this.waitElement(resultDistance);
-        return  driver.findElement(resultDistance);
+        return  driver.findElement(resultDistance).getText();
     }
-
-    public WebElement WorkshopInformationPage (){
+    public void clickFirstResultSearchHeading (){
+        this.waitElement(firstResult);
+          driver.findElement(firstResult).click();
+    }
+    public String WorkshopInformationPage (){
         this.waitElement(workshopInfoHeader);
-        return  driver.findElement(workshopInfoHeader);
+        return  driver.findElement(workshopInfoHeader).getText();
     }
 
     public WebElement WorkshopInformationHoursTitle (){
         this.waitElement(workshopTitle);
         return  driver.findElement(workshopTitle);
     }
-    public List<WebElement> WorkshopInformationDays (){
+    public List<WebElement> listWorkshopInformationDays (){
         this.waitElement(workshopHours);
         return  driver.findElements(workshopDays);
     }
-    public List<WebElement> WorkshopInformationHours (){
+    public List<WebElement> listWorkshopInformationHours (){
         this.waitElement(workshopHours);
         return  driver.findElements(workshopHours);
     }
 
    public void  PrintHours (){
 
-    List<WebElement> day = WorkshopInformationDays();
-    List<WebElement> hours = WorkshopInformationHours();
+    List<WebElement> day = listWorkshopInformationDays();
+    List<WebElement> hours = listWorkshopInformationHours();
 
     for(int x=0; x<day.size(); x++ ) {
         System.out.print(day.get(x).getText()+" ");

@@ -44,23 +44,23 @@ public void MainPageHeaderTest(){
 @Test
 public void WorkshopSearchTest(){
 
-    findWorkshopPage.StudioButton();
-    findWorkshopPage.StudioSearchField().sendKeys("10011");
-    findWorkshopPage.StudioSubmit().submit();
+    findWorkshopPage.clickStudioMenuButton();
+    findWorkshopPage.typeStudioSearchField("10011");
+    findWorkshopPage.clickStudioSubmit();
 
-    String searchResult = findWorkshopPage.FirstResultSearchHeading().getText();
-    String distanceResult =findWorkshopPage.FirstResultSearchDistance().getText();
+    String searchResult = findWorkshopPage.FirstResultSearchHeading();
+    String distanceResult =findWorkshopPage.FirstResultSearchDistance();
 
     System.out.println("Search Result: " + searchResult);
     System.out.println("Distance: " + distanceResult);
 
 
+    findWorkshopPage.clickFirstResultSearchHeading();
+    String workshopMainPage= findWorkshopPage.WorkshopInformationPage();
+    System.out.println("Workshop Page Heading: " + workshopMainPage);
 
-    findWorkshopPage.FirstResultSearchHeading().click();
+    assertEquals(searchResult,workshopMainPage);
 
-    String WorkshopMainPage= findWorkshopPage.WorkshopInformationPage().getText();
-    System.out.println("Workshop Page Heading: " + WorkshopMainPage);
-    assertEquals(searchResult,WorkshopMainPage);
     findWorkshopPage.WorkshopInformationHoursTitle().click();
     findWorkshopPage.PrintHours();
 
